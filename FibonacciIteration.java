@@ -34,14 +34,14 @@ public class FibonacciIteration{
                 evenInput = !evenInput;
             };
 
-            // turn n into positive value to calculate fibonacci values as usual.
+            // turn fibonacciNumber into positive value to calculate fibonacci values as usual.
             fibonacciNumber = fibonacciNumber.multiply(new BigInteger("-1"));
         };
 
         // iterate and use hashmap / memoization to calculate the fibonacci values.
         for (BigInteger i = bigIntThree; i.compareTo(fibonacciNumber) <= 0; i = i.add(BigInteger.ONE)){
             
-            // grab the fibonacci values n -1 and n - 2
+            // grab the fibonacci values from key(i - 1) and key(n - 2)
             BigInteger firstValue = fibResults.get(i.subtract(bigIntOne));
             BigInteger secondValue = fibResults.get(i.subtract(bigIntTwo));
 
@@ -56,7 +56,7 @@ public class FibonacciIteration{
             fibResults.remove(i.subtract(bigIntThree));
         }
 
-        // special case: if input 'n' was negative and even, return negative fibonacci number.
+        // special case: if input 'fibonacciNumber' was negative and even, return negative fibonacci number.
         if (negativeInput && evenInput){
             negativeInput = false;
             evenInput = false;
@@ -72,8 +72,4 @@ public class FibonacciIteration{
       
     };
 
-    public static void main(String[] args) {
-        System.out.println(FibonacciIteration.calculateFibonacci(new BigInteger("5")));
-        System.out.println("keys: " + fibResults.keySet()+ " | values: " + fibResults.values());
-    }
 }
